@@ -1,5 +1,4 @@
 <?php
     echo("hello wilfried");
     echo("hello rayane");
-    echo("hello");
-    
+    echo("hello emmany morti");
