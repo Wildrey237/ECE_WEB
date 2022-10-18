@@ -47,4 +47,14 @@ class Database
     public function AddComment(){
         return "hello";
     }
+
+    public function getCategories(){
+        $sql = 'SELECT * FROM `categorie`';
+        $statement = self::$database->prepare($sql);
+        $statement->execute();
+        $categories = $statement->fetchAll();
+        return $categories;
+
+    }
 }
+
