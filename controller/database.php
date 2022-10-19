@@ -21,14 +21,14 @@ class Database
 
     // user function
 
-    public function getUsers(){
+    public function GetUsers(){
         $sql = 'SELECT * FROM user';
         $statement = self::$database->prepare($sql);
         $statement->execute();
         return $statement->fetchAll();
     }
 
-    public function changePassword($id, $newPassword){
+    public function ChangePassword($id, $newPassword){
         $sql = 'UPDATE users SET password = ? WHERE id = ?';
         $statement = self::$database->prepare($sql);
         $statement->execute(array($newPassword, $id));
@@ -46,6 +46,16 @@ class Database
         $statement = self::$database->prepare($sql);
         $statement->bindParam(":iduser",$id,PDO::PARAM_INT);
         $statement->execute();
+    }
+
+    public function Connect($mail, $password){
+        $sql = "SELECT * FROM `user`
+                WHERE mail_user = :mail
+                AND mot_de_passe = :password";
+        $statement = self::$database->prepare($sql);
+
+        $statement->execute(array(":mail" => $mail, ":password" => $password ));
+        return $statement->fetchAll();
     }
 
 
