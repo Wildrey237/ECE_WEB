@@ -1,6 +1,7 @@
 <?php
-    include ("controller/database.php");
-    $leboncoin = new Database();
+
+//    include ("controller/database.php");
+//    $leboncoin = new Database();
 //    $var = "01234567890";
 //    echo ("la var est ". $var);
 //    $users = $leboncoin->GetUsers();
@@ -10,8 +11,8 @@
 //        }
 //    $users = $leboncoin -> GetUsers();
 //    print_r($users[0]);
-    $mot = $leboncoin ->connect("wilfriedbemelingue@gdmail.com","ebe596017db2f8c69136e5d6e594d365");
-        print_r($mot);
+//    $mot = $leboncoin ->connect("wilfriedbemelingue@gdmail.com","ebe596017db2f8c69136e5d6e594d365");
+//        print_r($mot);
 //    $leboncoin ->DeletteAnnonce(4);
 //    $leboncoin -> AlterAnnnonce(1,"wilfried","humain","2022-04-20","1","1","pinterest.png");
 //    $Annonce = $leboncoin ->GetAnnonce();
@@ -20,6 +21,5 @@
 //    $categorie = $leboncoin ->GetCategorie();
 //    print_r($categorie[0]['nom_categorie']);
 include ("modele/session.php");
-    Session();
 
-echo $_SESSION["session"];
+var_dump($_SESSION["session"]);

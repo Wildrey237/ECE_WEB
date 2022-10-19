@@ -1,7 +1,7 @@
-<?php include ("../modele/session.php");
-//    Session();
-$_SESSION["user"]="";
-$_SESSION["session"]=false;
+<?php
+    include_once ("./modele/session.php");
+    var_dump($_SESSION);
+
 ?>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
   <div class="container-fluid">

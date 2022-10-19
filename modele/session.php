@@ -1,6 +1,9 @@
 <?php
+
+session_start();
+
 function Session ($nomU="",$mail="",$id="",$connect = false){
-        session_start();
+
     if ($connect){
         $_SESSION["user"] = $nomU;
         $_SESSION["mail"] = $mail;
