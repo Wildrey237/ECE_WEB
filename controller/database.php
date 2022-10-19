@@ -78,17 +78,18 @@ class Database
         //TODO : Invalid parameter number: number of bound variables does not match number of tokens
     }
 
-    public function GetAnnonce(){
-        $sql = 'SELECT * FROM `annonce`';
+    public function GetAnnonce($id_user){
+        $sql = 'SELECT * FROM `annonce` WHERE `USER_id_user`=:id_user;';
         $statement = self::$database->prepare($sql);
+        $statement->bindParam(":id_user",$id_user,PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll();
     }
 
-    public function DeletteAnnonce($id){
-        $sql = "DELETE FROM `annonce` WHERE `annonce`.`id_Annonce` = :id_Annonce";
+    public function DeletteAnnonce($id_annonce, $id_user){
+        $sql = "DELETE FROM annonce WHERE annonce.id_Annonce= :id_Annonce AND `USER_id_user` = {$id_user}";
         $statement = self::$database->prepare($sql);
-        $statement->bindParam(":id_Annonce",$id,PDO::PARAM_INT);
+        $statement->bindParam(":id_Annonce",$id_annonce,PDO::PARAM_INT);
         $statement->execute();
     }
 
