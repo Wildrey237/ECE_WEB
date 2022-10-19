@@ -19,3 +19,7 @@
 //
 //    $categorie = $leboncoin ->GetCategorie();
 //    print_r($categorie[0]['nom_categorie']);
+include ("modele/session.php");
+    Session();
+
+echo $_SESSION["session"];

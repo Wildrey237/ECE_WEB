@@ -5,7 +5,7 @@ function Session ($nomU="",$mail="",$id="",$connect = false){
         $_SESSION["user"] = $nomU;
         $_SESSION["mail"] = $mail;
         $_SESSION["id"] = $id;
-        $session = true;
+        $_SESSION["session"] = true;
 //        print_r( $_SESSION["user"]);
 //            print_r($_SESSION["mail"]);
 //                print_r($_SESSION["id"]);
@@ -14,9 +14,8 @@ function Session ($nomU="",$mail="",$id="",$connect = false){
         $_SESSION["user"] = $nomU;
         $_SESSION["mail"] = $mail;
         $_SESSION["id"] = $id;
-        $session=false;
+        $_SESSION["session"]=false;
         //header("location:../index.html");
     }
-    return $session;
 }
 ?>

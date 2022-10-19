@@ -1,12 +1,8 @@
-<?php 
-
-session_start();
-
-$user = $_SESSION;
-
-
+<?php include ("../modele/session.php");
+//    Session();
+$_SESSION["user"]="";
+$_SESSION["session"]=false;
 ?>
-
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
   <div class="container-fluid">
     <a class="navbar-brand me-5">Leboncoin</a>
@@ -16,23 +12,22 @@ $user = $_SESSION;
     <div class="collapse navbar-collapse " id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item me-5">
-          <a class="nav-link" href="/leboncoin/index.php">Acceuil</a>
+          <a class="nav-link" href="/">Acceuil</a>
         </li>
         
        <?php
-            if ( $user['user_id']== null ) {
+            if (!$_SESSION["session"]) {
                 echo '<li class="nav-item me-5">
-                <a class="nav-link" href="/leboncoin/auth.php">Connexion</a>
+                <a class="nav-link" href="views/connexion.html">Connexion</a>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link" href="/leboncoin/create_account.php">Création du compte</a>
+                <a class="nav-link" href="views/form_inscription.html">Création du compte</a>
               </li>';
             } else {
                 echo '
-                
-
+            
                 <li class="nav-item dropdown me-5">
-                <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown">'.$user['user_name'].'</a> 
+                <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown">'.$_SESSION["user"].'</a> 
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/leboncoin/profile.php">Géréer son compte</a></li>
                   <li><a class="dropdown-item" href="/leboncoin/logout.php">Se déconnécter</a></li>
