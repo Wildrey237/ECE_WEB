@@ -1,18 +1,11 @@
 <?php
     include('..\controller\database.php');
     include_once ("session.php");
-//    var_dump($_SESSION);
-    function DoOption(){
-        $traitement ="";
+
+    if (isset($_POST)){
         $leboncoin = new Database();
-        $annonce = $leboncoin ->GetAnnonceFromUser($_SESSION["id"]);
-        foreach ($annonce as $select){
-            $traitement = $traitement . "<option value ='{$select["id_Annonce"]}'> {$select["nom_annonce"]} </option>";
-        }
-        return $traitement;
+        $date = date('y-m-j');
+        $leboncoin->AlterAnnnonce($_POST["id_annonce"],$_POST["nom_annonce"],$_POST['detail'], $date, $_SESSION["id"],$_POST['id_categorie'], $_POST["media"]);
+        echo "good";
+        header("location: ../views/good.html");
     }
-if (isset($_POST)){
-    var_dump($_POST);
-    $leboncoin = new Database();
-    //$leboncoin ->DeletteAnnonce($_POST[]);
-}

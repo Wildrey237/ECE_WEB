@@ -1,7 +1,6 @@
 <?php
     include ("modele/session.php");
     include ("controller/database.php");
-    if(VerifySession()){
         $leboncoin = new Database();
 //    $var = "01234567890";
 //    echo ("la var est ". $var);
@@ -15,17 +14,18 @@
 //    $mot = $leboncoin ->connect("wilfriedbemelingue@gdmail.com","ebe596017db2f8c69136e5d6e594d365");
 //        print_r($mot);
 //        $leboncoin ->DeletteAnnonce(2, 8);
-//    $leboncoin -> AlterAnnnonce(1,"wilfried","humain","2022-04-20","1","1","pinterest.png");
-        $Annonce = $leboncoin ->ShowUserMessage(5,5);
-        var_dump($Annonce);
+//    $leboncoin -> AlterAnnnonce(3,"wilfried","humain","2022-04-20","1","1","pinterest.png");
+//        $Annonce = $leboncoin ->ShowUserMessage(5,5);
+//        var_dump($Annonce);
 //
 //    $categorie = $leboncoin ->GetCategorie();
 //    print_r($categorie[0]['nom_categorie']);
 //include ("modele/session.php");
 //
 //var_dump($_SESSION["session"]);
-    }else{
-        header("location: index.php");
-    }
+//if(VerifySession()){
+//    }else{
+//        header("location: index.php");
+//    }
 
-
+echo date('y-m-j');
