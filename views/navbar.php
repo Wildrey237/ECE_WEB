@@ -1,8 +1,4 @@
-<?php
-    include_once ("./modele/session.php");
-    var_dump($_SESSION);
-
-?>
+<?php include_once ("./modele/session.php") ;?>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
   <div class="container-fluid">
     <a class="navbar-brand me-5">Leboncoin</a>
@@ -12,7 +8,7 @@
     <div class="collapse navbar-collapse " id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item me-5">
-          <a class="nav-link" href="/">Acceuil</a>
+          <a class="nav-link" href="./index.php">Aceuil</a>
         </li>
         
        <?php
@@ -30,7 +26,7 @@
                 <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown">'.$_SESSION["user"].'</a> 
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/leboncoin/profile.php">Géréer son compte</a></li>
-                  <li><a class="dropdown-item" href="../modele/logout.php">Se déconnécter</a></li>
+                  <li><a class="dropdown-item" href="./modele/logout.php">Se déconnécter</a></li>
                   <li><a class="dropdown-item" href="#">Modifier son compte</a></li>
                 </ul>
               </li> 
@@ -40,20 +36,16 @@
               <li class="nav-item dropdown me-5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Mes annonces</a> 
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/leboncoin/create_annonce.php">Ajouter une annonce</a></li>
-                  <li><a class="dropdown-item" href="/leboncoin/delet_annonce2.php">Supprimer une annonce</a></li> 
+                  <li><a class="dropdown-item" href="create_annonce.php">Ajouter une annonce</a></li>
+                  <li><a class="dropdown-item" href="delete_annonce.php">Supprimer une annonce</a></li> 
                   <li><a class="dropdown-item" href="#">Modifer une annoce</a></li>
                 </ul>
               </li> 
               ';
-                // TODO : refaire les differents liens dans la nav bar
             }
-            
-
-
         ?>
-      <form class="d-flex">
-        <textarea class="form-control me-5" type="text" placeholder="Recherche"cols="70" rows="1"></textarea>
+      <form class="d-flex" action="./modele/search.php">
+        <input type="search" class="form-control me-5" name="recherhce" placeholder="Recherche"cols="70" rows="1">
         <button class="btn btn-primary" type="button">Rechercher</button>
       </form>
     </div>

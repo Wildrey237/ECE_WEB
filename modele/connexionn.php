@@ -11,6 +11,8 @@
                 header("location: ../index.php"); //TODO : mettre ou la page va nous rediriger
             }else{
                 echo "pas d'utilisateur";
+                $_COOKIE["html"] = "
+                ";
                 // TODO: faire les details pour RAYANE
             }
 
