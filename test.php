@@ -15,7 +15,7 @@
 //        print_r($mot);
 //        $leboncoin ->DeletteAnnonce(2, 8);
 //    $leboncoin -> AlterAnnnonce(1,"wilfried","humain","2022-04-20","1","1","pinterest.png");
-    $Annonce = $leboncoin ->GetAnnonce(8);
+    $Annonce = $leboncoin ->ShowUserMessage(5,5);
     var_dump($Annonce);
 //
 //    $categorie = $leboncoin ->GetCategorie();

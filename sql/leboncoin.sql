@@ -80,11 +80,11 @@ INSERT INTO `categorie` (`id_categorie`, `nom_categorie`) VALUES
 
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
-  `id_message` int NOT NULL AUTO_INCREMENT,
+  `id_annonce` int NOT NULL AUTO_INCREMENT,
   `detail` varchar(45) DEFAULT NULL,
   `Annonce_id_Annonce` int NOT NULL,
   `USER_id_user` int NOT NULL,
-  PRIMARY KEY (`id_message`,`Annonce_id_Annonce`,`USER_id_user`),
+  PRIMARY KEY (`id_annonce`,`Annonce_id_Annonce`,`USER_id_user`),
   UNIQUE KEY `Annonce_id_Annonce_UNIQUE` (`Annonce_id_Annonce`),
   KEY `fk_message_Annonce_idx` (`Annonce_id_Annonce`),
   KEY `fk_message_USER1_idx` (`USER_id_user`)

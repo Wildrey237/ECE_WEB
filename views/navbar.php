@@ -16,7 +16,7 @@
         </li>
         
        <?php
-            if (!$_SESSION["session"]) {
+            if (!isset($_SESSION["session"])) {
                 echo '<li class="nav-item me-5">
                 <a class="nav-link" href="views/connexion.html">Connexion</a>
               </li>
@@ -30,7 +30,7 @@
                 <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown">'.$_SESSION["user"].'</a> 
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/leboncoin/profile.php">Géréer son compte</a></li>
-                  <li><a class="dropdown-item" href="/leboncoin/logout.php">Se déconnécter</a></li>
+                  <li><a class="dropdown-item" href="../modele/logout.php">Se déconnécter</a></li>
                   <li><a class="dropdown-item" href="#">Modifier son compte</a></li>
                 </ul>
               </li> 
@@ -41,11 +41,12 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Mes annonces</a> 
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/leboncoin/create_annonce.php">Ajouter une annonce</a></li>
-                  <li><a class="dropdown-item" href="/leboncoin/delet_annonce2.php">Supprimer une annonce</a></li>
+                  <li><a class="dropdown-item" href="/leboncoin/delet_annonce2.php">Supprimer une annonce</a></li> 
                   <li><a class="dropdown-item" href="#">Modifer une annoce</a></li>
                 </ul>
               </li> 
               ';
+                // TODO : refaire les differents liens dans la nav bar
             }
             
 

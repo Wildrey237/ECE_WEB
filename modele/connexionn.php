@@ -8,7 +8,7 @@
             if  (count($users) >0){
                 print_r ($users);
                 Session($users[0]["nom_user"],$users[0]["mail_user"],$users[0]["id_user"],true);
-                header("location: ../index.php"); //TODO :
+                header("location: ../index.php"); //TODO : mettre ou la page va nous rediriger
             }else{
                 echo "pas d'utilisateur";
                 // TODO: faire les details pour RAYANE
