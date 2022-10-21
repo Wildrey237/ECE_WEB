@@ -60,19 +60,19 @@ class Database
 
     // Annonce Function
 
-    public function AddAnnnonce ($nom_annonce, $detail, $date, $id_user, $id_categorie, $media){ // ajouter des annonces
-        $sql = "INSERT INTO `annonce` (`id_Annonce`, `nom_annonce`, `detail`, `date_ajout`, `USER_id_user`, `categorie_id_categorie`, `Media`) 
-                VALUES (NULL, :nom_annonce, :detail, :date, :id_user, :id_categorie, :media)";
+    public function AddAnnnonce ($nom_annonce, $detail, $prix, $date, $id_user, $id_categorie, $media){ // ajouter des annonces
+        $sql = "INSERT INTO `annonce` (`id_Annonce`, `nom_annonce`, `prix`, `detail`, `date_ajout`, `USER_id_user`, `categorie_id_categorie`, `Media`)
+                VALUES (NULL, :nom_annonce, :prix, :detail, :date, :id_user, :id_categorie, :media)";
         $statement = self::$database->prepare($sql);
-        $statement->execute(array(":nom_annonce" => $nom_annonce, ":detail" => $detail, ":date" => $date, ":id_user" => $id_user, ":id_categorie" => $id_categorie, ":media" => $media));
+        $statement->execute(array(":nom_annonce" => $nom_annonce, "prix"=>$prix, ":detail" => $detail, ":date" => $date, ":id_user" => $id_user, ":id_categorie" => $id_categorie, ":media" => $media));
     }
 
-    public function AlterAnnnonce ($id_annonce,$nom_annonce, $detail, $date, $id_user, $id_categorie, $media){ //modifier les annonces
-        $sql = "UPDATE `annonce` SET `nom_annonce` = :nom_annonce, `detail` = :detail, `date_ajout` = :date, `Media` = :Media, `categorie_id_categorie` =:id_categorie
+    public function AlterAnnnonce ($id_annonce,$nom_annonce, $prix, $detail, $date, $id_user, $id_categorie, $media){ //modifier les annonces
+        $sql = "UPDATE `annonce` SET `nom_annonce` = :nom_annonce, `prix` = :prix,`detail` = :detail, `date_ajout` = :date, `Media` = :Media, `categorie_id_categorie` =:id_categorie
                  WHERE `annonce`.`id_Annonce` = {$id_annonce}
                    AND `annonce`.`USER_id_user` = {$id_user}";
         $statement = self::$database->prepare($sql);
-        $statement->execute(array(":nom_annonce" => $nom_annonce, ":detail" => $detail, ":date" => $date, ":id_categorie" => $id_categorie, ":Media" => $media ));
+        $statement->execute(array(":nom_annonce" => $nom_annonce, ":prix"=>$prix, ":detail" => $detail, ":date" => $date, ":id_categorie" => $id_categorie, ":Media" => $media ));
         //TODO : Invalid parameter number: number of bound variables does not match number of tokens
     }
 

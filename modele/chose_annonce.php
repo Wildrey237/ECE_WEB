@@ -14,6 +14,7 @@ if (isset($_POST)){
             <form action='modify_annonce.php' method='post'>
                 Nom annonce <input type='text' name='nom_annonce' value='{$annonce[0]['nom_annonce']}'> <br>
                 Detail <input type='text' name='detail' value='{$annonce[0]['detail']}'> <br>
+                Prix <input type='number' name='detail' value='{$annonce[0]['prix']}'> <br>
                 Media <input type='text' name='media' value='{$annonce[0]['Media']}'> <br>
                 Categorie: <select name='categorie'>
                                    {$options}
