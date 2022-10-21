@@ -25,7 +25,7 @@
                 <li class="nav-item dropdown me-5">
                 <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown">'.$_SESSION["user"].'</a> 
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/leboncoin/profile.php">Géréer son compte</a></li>
+                  <li><a class="dropdown-item" href="views/profile.php">Géréer son compte</a></li>
                   <li><a class="dropdown-item" href="./modele/logout.php">Se déconnécter</a></li>
                   <li><a class="dropdown-item" href="#">Modifier son compte</a></li>
                 </ul>
