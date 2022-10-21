@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse " id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item me-5">
-          <a class="nav-link" href="./index.php">Aceuil</a>
+          <a class="nav-link" href="./index.php">Accueil</a>
         </li>
         
        <?php
@@ -26,7 +26,7 @@
                 <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown">'.$_SESSION["user"].'</a> 
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="views/profile.php">Géréer son compte</a></li>
-                  <li><a class="dropdown-item" href="./modele/logout.php">Se déconnécter</a></li>
+                  <li><a class="dropdown-item" href="./modele/logout.php">Se déconnecter</a></li>
                   <li><a class="dropdown-item" href="">Modifier son compte</a></li>
                 </ul>
               </li> 
@@ -37,7 +37,7 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Mes annonces</a> 
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="create_annonce.php">Ajouter une annonce</a></li>
-                  <li><a class="dropdown-item" href="./views/delete_annonce.php">Supprimer une annonce</a></li> 
+                  <li><a class="dropdown-item" href="./views/checkboxDelAnnonce.php">Supprimer une annonce</a></li> 
                   <li><a class="dropdown-item" href="./views/form_modify_annonce.php">Modifer une annoce</a></li>
                 </ul>
               </li> 
