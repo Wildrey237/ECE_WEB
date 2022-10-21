@@ -1,5 +1,5 @@
 <?php
-    include ("modele/session.php");
+    //include ("modele/session.php");
     include ("controller/database.php");
         $leboncoin = new Database();
 //    $var = "01234567890";
@@ -23,10 +23,11 @@
 //include ("modele/session.php");
 //
 //var_dump($_SESSION["session"]);
-if(VerifySession()){
-    echo date('y-m-j');
-    }else{
-        header("location: index.php");
-    }
+//if(VerifySession()){
+//    echo date('y-m-j');
+//    }else{
+//        header("location: index.php");
+//    }
 
+$leboncoin -> CreateMessagefromEmeteur(5,5,0,"bonjour le monde");
 

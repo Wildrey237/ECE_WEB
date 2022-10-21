@@ -168,5 +168,15 @@ class Database
         $statement->execute();
         return $statement->fetchAll();
     }
+    #TODO refaire la fonction pour montrer les messages
+
+    public function CreateMessagefromEmeteur($id_user, $id_annonce, $reponse, $message){
+        $sql = "INSERT INTO `message` (`id_message`, `detail`, `Annonce_id_Annonce`, `USER_id_user`, `reponse`) 
+                VALUES (NULL, :detail, :id_annonce, :id_user, :reponse)";
+        $statement = self::$database->prepare($sql);
+        $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user, ":reponse" => $reponse, ":detail" => $message));
+    }
+    #TODO refaire la fonction pour creer les messages
+
 }
 
