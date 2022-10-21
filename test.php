@@ -23,9 +23,10 @@
 //include ("modele/session.php");
 //
 //var_dump($_SESSION["session"]);
-//if(VerifySession()){
-//    }else{
-//        header("location: index.php");
-//    }
+if(VerifySession()){
+    echo date('y-m-j');
+    }else{
+        header("location: index.php");
+    }
 
-echo date('y-m-j');
+

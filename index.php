@@ -8,17 +8,17 @@
   $category = '';
   $prix = '';
 
-  if ( isset($_GET['nom']) ) {
+  if (isset($_GET['nom'])) {
     $keywords = $_GET['nom'];
 
   }
 
-  if ( isset($_GET['category']) ) {
+  if (isset($_GET['category'])) {
     $category = $_GET['category'];
 
   }
 
-  if ( isset($_GET['prix']) ) {
+  if (isset($_GET['prix'])) {
     $prix = $_GET['prix'];
 
   }
@@ -47,7 +47,7 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Leboncoin</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Weclome to our app</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Welcome to our app</p>
                 </div>
             </div>
         </header>
@@ -62,16 +62,16 @@
                     <div class="col-sm-4">
                       <div class="card">
                         <div class="card-body">
-                            <form action="" method="get">
+                            <form action="" method="post">
 
                             <div class="form-group mb-3">
-                              <label for="">Recherche par mot clé</label>
+                              <label>Recherche par mot clé</label>
                               <input type="text" class="form-control" id="keywords" name="nom" value="<?php echo $keywords ?>">
                             </div>
                             <div class="form-group mb-3">
-                              <label for="">Rcherche par category</label>
+                              <label>Recherche par category</label>
                               <select  class="form-control" id="category" name="category">
-                                <option value="">Veuiller choisir une catégorie</option>
+                                <option value="">Veuillez choisir une catégorie</option>
 
                                 <?php
                                   $categories = $database->GetCategorie();
@@ -93,11 +93,11 @@
                               </select>
                             </div>
                             <div class="form-group mb-3">
-                              <label for="">Rcherche par prix</label>
-                              <input type="number" value="<?php echo $prix ?>" class="form-control"  id="price" name="prix">
+                              <label>Recherche par prix</label>
+                              <input type="float" value="<?php echo $prix ?>" class="form-control"  id="price" name="prix">
                             </div>
                             <div class="form-group mb-3">
-                               <button class="btn btn-primary" type="submit">Rechercher</button>
+                               <button class="btn btn-primary" type="submit" name="validate">Rechercher</button>
                             </div>
 
                             </form>
@@ -114,13 +114,74 @@
 
                       <?php 
                       
+                      /*
+                      $products = $database->getAnnonceByFilters($keywords, $category, $prix);
+                      var_dump($products);
+                      */
                       
-                      $products = $database->getAnnonceByFilters( $keywords,$category,$prix );
+                      if (isset($_POST['validate'])){
+                        $nom = $_POST['nom'];
+                        $categorie = $_POST['category'];
+                        $prix = $_POST['prix'];
+                        /*echo "Nom annonce: ".$nom .'<br>' .
+                              "Catégorie annonce: ".$categorie . '<br>';*/
+
+                        /* FONCTIONNE BIEN
+                        $filtered_annonces = $database->getAnnonceByFilters($nom, $categorie, $prix);
+                        var_dump($filtered_annonces['nom_annonce']);
+                        var_dump($filtered_annonces['prix']);
+                        var_dump($filtered_annonces['media']);*/
+
+                        $filtered_annonces = $database->GetAnnonce();
+                        foreach ($filtered_annonces as $annonce){
+                          if (($annonce['nom_annonce'] == $nom) || ($annonce['prix'] == $prix) || ($annonce['categorie_id_categorie'] == $categorie)){
+                            var_dump($annonce['nom_annonce']);
+                            var_dump($annonce['Media']);
+                            
+                          }
+                        }
+                                             
+                        
+                      } else {
+                        $toutesAnnonce = $database->GetAnnonce();
+                    
+                        foreach ($toutesAnnonce as $annonce){
+                          var_dump($annonce['nom_annonce']);
+                          var_dump($annonce['prix']);
+                          echo "--------------------------------------";
+                                
+                      }
+
+
+                      }
+
 
                       
+                      
 
-                      foreach ($products as $key => $product) {
+                      
+                       /*CODE JORDAN 
+                      foreach ($products as $product){
 
+                        if ($product['keywords'] === $_GET['keyword']){
+                          echo '
+                          <div class="col-md-4 mb-5">
+                              <div class="card h-100">
+                                  <!-- Product image-->
+                                  <img class="card-img-top" src="'.$product['Media'].'" alt="...">
+                                  <!-- Product details-->
+                                  <div class="card-body p-4">
+                                      <div class="text-center">
+                                          <!-- Product name-->
+                                          <h5 class="fw-bolder">'.$product['nom_annonce'].'</h5>
+                                          <!-- Product price-->
+                                         '.$product['prix'].' $
+                                      </div>
+                                  </div>';
+                        } */
+
+
+                        /* CODE RAYANE
                         echo '
                         <div class="col-md-4 mb-5">
                             <div class="card h-100">
@@ -136,18 +197,19 @@
                                     </div>
                                 </div>
                                 <!-- Product actions-->';
-                                if (  isset($_SESSION['id_user']) ) { // 
+                                if (isset($_SESSION['id_user'])) { // 
                                   echo '
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                       <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="views/annonce.php?id='.$product['id_Annonce'].'">View options</a></div>
                                   </div>
                                   ';
-                                }
+                                }*/
+                              
                                 
                             echo '</div>
                         </div>
                         ';
-                      }
+                      
 
                       
                       ?>
