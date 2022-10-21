@@ -72,7 +72,7 @@ class Database
                  WHERE `annonce`.`id_Annonce` = {$id_annonce}
                    AND `annonce`.`USER_id_user` = {$id_user}";
         $statement = self::$database->prepare($sql);
-        $statement->execute(array(":nom_annonce" => $nom_annonce, ":prix"=>$prix, ":detail" => $detail, ":date" => $date, ":id_categorie" => $id_categorie, ":Media" => $media ));
+        $statement->execute(array(":nom_annonce" => $nom_annonce, ":prix" => $prix, ":detail" => $detail, ":date" => $date, ":id_categorie" => $id_categorie, ":Media" => $media ));
         //TODO : Invalid parameter number: number of bound variables does not match number of tokens
     }
 

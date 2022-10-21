@@ -5,7 +5,8 @@
     if (isset($_POST)){
         $leboncoin = new Database();
         $date = date('y-m-j');
-        $leboncoin->AlterAnnnonce($_POST["id_annonce"],$_POST["nom_annonce"],$_POST['detail'], $_POST["prix"], $date, $_SESSION["id"],$_POST['id_categorie'], $_POST["media"]);
+        $leboncoin->AlterAnnnonce($_POST["id_annonce"], $_POST["nom_annonce"], $_POST["prix"], $_POST['detail'], $date, $_SESSION["id"], $_POST['categorie'],$_POST["media"]);
+//        $_POST["id_annonce"],,, , , ,,
         echo "good";
         header("location: ../views/good.html");
     }
