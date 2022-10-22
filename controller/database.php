@@ -217,7 +217,10 @@ class Database
     }
 
     function affiche_like($id_user){
-        $sql = "SELECT * FROM `like` WHERE `USER_id_user` ={$id_user};";
+        $sql = "SELECT annonce.id_Annonce as 'id_annonce', annonce.nom_annonce AS 'nom_annonce', annonce.prix AS 'prix', annonce.detail AS 'detail' 
+                FROM `annonce`, `like`
+                WHERE like.USER_id_user = {$id_user}
+                AND annonce.`USER_id_user` = {$id_user};";
         $statement = self::$database->prepare($sql);
         $statement->execute();
         return $statement->fetchAll();
