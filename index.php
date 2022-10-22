@@ -126,20 +126,28 @@
                         /*echo "Nom annonce: ".$nom .'<br>' .
                               "Catégorie annonce: ".$categorie . '<br>';*/
 
-                        /* FONCTIONNE BIEN
+                        
                         $filtered_annonces = $database->getAnnonceByFilters($nom, $categorie, $prix);
-                        var_dump($filtered_annonces['nom_annonce']);
-                        var_dump($filtered_annonces['prix']);
-                        var_dump($filtered_annonces['media']);*/
-
+                        //var_dump($filtered_annonces['nom_annonce']);
+                        //var_dump($filtered_annonces['prix']);
+                        //var_dump($filtered_annonces['media']);
+                        
+                        foreach ($filtered_annonces as $annonce){
+                          if ((($annonce['nom_annonce'] == $nom) && ($annonce['prix'] == $prix) && ($annonce['categorie_id_categorie'] == $categorie))){
+                            var_dump($annonce['nom_annonce']);
+                            echo "<img ". "src='".$annonce['Media']."' alt='hello'>";
+                            
+                          } 
+                        }
+                        /*
                         $filtered_annonces = $database->GetAnnonce();
                         foreach ($filtered_annonces as $annonce){
-                          if (($annonce['nom_annonce'] == $nom) || ($annonce['prix'] == $prix) || ($annonce['categorie_id_categorie'] == $categorie)){
-                            var_dump($annonce['nom_annonce']);
-                            var_dump($annonce['Media']);
-                            
+                          if (($annonce['nom_annonce'] == "") || ($annonce['prix'] == $prix) || ($annonce['categorie_id_categorie'] == $categorie)){
+                            echo "Bonjour";
                           }
-                        }
+                        }*/
+
+                        
                                              
                         
                       } else {
@@ -148,7 +156,13 @@
                         foreach ($toutesAnnonce as $annonce){
                           var_dump($annonce['nom_annonce']);
                           var_dump($annonce['prix']);
-                          echo "--------------------------------------";
+                          echo "<style>
+                            img {
+                              border-radius: 80px 120px;
+                            }
+                          </style>";
+                          echo "<img ". "src='".$annonce['Media']."' alt='hello'>";
+                          echo "--------------------------------------" . "<br>";
                                 
                       }
 
