@@ -110,24 +110,19 @@ class Database
         return $statement->fetchAll();
     }
 
-    public function getAnnonceByFilters($keyword, $categoryID, $price)
-    { //recuperer  les annonces par filters
-        $sql = "SELECT * FROM `annonce` WHERE  `categorie_id_categorie` = :id_categorie  AND `prix` <= :prix  AND `nom_annonce` LIKE '%{$keyword}%'  ";
-
+    public function getAnnonceByFilters($keyword,$categoryID,$price){ //recuperer  les annonces par filters
+        $sql = "SELECT * FROM `annonce` WHERE  `categorie_id_categorie` = ?  AND `prix` <= ?  AND `nom_annonce` LIKE '%".$keyword."%'  ";
+ 
         $statement = self::$database->prepare($sql);
-        $statement->bindParam(":id_categorie", $categoryID, PDO::PARAM_INT);
-        $statement->bindParam(":prix", $price, PDO::PARAM_INT);
-        $statement->execute();
+        $statement->execute(array($categoryID,$price));
         return $statement->fetchAll();
     }
 
-    public function getAnnonceByID($id)
-    { //recuperer les annonces par filters
-        $sql = "SELECT * FROM `annonce` WHERE  `id_Annonce` = :id_annonce  ";
-
+    public function getAnnonceByID( $id ){ //recuperer  les annonces par filters
+        $sql = "SELECT * FROM `annonce` WHERE  `id_Annonce` = ?  ";
+ 
         $statement = self::$database->prepare($sql);
-        $statement->bindParam(":id_annonce", $id_annonce, PDO::PARAM_INT);
-        $statement->execute();
+        $statement->execute(array($id));
         return $statement->fetchAll()[0];
     }
 

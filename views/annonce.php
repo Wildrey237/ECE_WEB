@@ -1,8 +1,13 @@
 <?php
-    include("modele/session.php");
-    require_once('../controller/database.php');
-    $database = new Database();
-    $data = $database->getAnnonceByID($_GET['id']);
+
+  require_once('./controller/database.php');
+
+  $database = new Database();
+ 
+
+  $data = $database->getAnnonceByID($_GET['id']);
+
+
 ?>
 
 <!doctype html>
@@ -15,7 +20,10 @@
   </head>
   <body>
     
-        <?php require_once("views/navbar.php"); ?>
+        <?php
+            include ("modele/session.php");
+            require_once("views/navbar.php");
+        ?>
   
 
 
@@ -36,18 +44,23 @@
                 <?php echo $data['prix'] ?> $
                 </h1>
 
-                <h1 class="text-success text-end">
-                    <?php echo $data['date'] ?>
-                </h1>
 
-                <img src="<?php echo $data['Media'] ?>" class="w-100 rounded" alt="">
+                <img src=" <?php echo $data['Media'] ?>" class="w-100 rounded" alt="">
 
 
                 <p class="text-muted">
-                    <?php echo $data['detail'] ?>
+                <?php echo $data['detail'] ?>
+                </p>
+                <p class="text-muted">
+                <?php echo $data['date_ajout'] ?>
                 </p>
   
             </div>
+
+            <?php
+           
+            require_once("views/footer.php");
+        ?>
 
 
 
