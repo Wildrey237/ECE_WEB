@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 22 oct. 2022 à 15:57
+-- Généré le : sam. 22 oct. 2022 à 16:04
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -81,7 +81,7 @@ INSERT INTO `categorie` (`id_categorie`, `nom_categorie`) VALUES
 
 DROP TABLE IF EXISTS `like`;
 CREATE TABLE IF NOT EXISTS `like` (
-  `like` int DEFAULT NULL,
+  `like` int DEFAULT '1',
   `Annonce_id_Annonce` int NOT NULL,
   `USER_id_user` int NOT NULL,
   PRIMARY KEY (`Annonce_id_Annonce`,`USER_id_user`),
