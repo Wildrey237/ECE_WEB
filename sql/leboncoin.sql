@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 21 oct. 2022 à 23:56
+-- Généré le : sam. 22 oct. 2022 à 15:57
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `annonce` (
 
 INSERT INTO `annonce` (`id_Annonce`, `nom_annonce`, `prix`, `detail`, `date_ajout`, `USER_id_user`, `categorie_id_categorie`, `Media`) VALUES
 (1, 'acer nitro', 999, 'acer nitro core i5', '2022-10-10', 9, 2, 'acer.jpg'),
-(2, 'Mercedes', 35000, 'Mercedes AMG', '2022-10-22', 6, 1, 'mercedes.png');
+(2, 'Mercedes Classe G', 75000, 'Mercedes GLK', '2022-10-22', 6, 1, 'mercedesglk.png');
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,7 @@ INSERT INTO `categorie` (`id_categorie`, `nom_categorie`) VALUES
 
 DROP TABLE IF EXISTS `like`;
 CREATE TABLE IF NOT EXISTS `like` (
-  `Like_total` int DEFAULT NULL,
+  `like` int DEFAULT NULL,
   `Annonce_id_Annonce` int NOT NULL,
   `USER_id_user` int NOT NULL,
   PRIMARY KEY (`Annonce_id_Annonce`,`USER_id_user`),
@@ -102,18 +102,21 @@ CREATE TABLE IF NOT EXISTS `message` (
   `USER_id_user` int NOT NULL,
   `Annonce_id_Annonce` int NOT NULL,
   `Annonce_USER_id_user` int NOT NULL,
+  `date_creation` datetime NOT NULL,
   PRIMARY KEY (`id_message`,`USER_id_user`,`Annonce_id_Annonce`,`Annonce_USER_id_user`),
   KEY `fk_message_USER1_idx` (`USER_id_user`),
   KEY `fk_message_Annonce1_idx` (`Annonce_id_Annonce`,`Annonce_USER_id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `message`
 --
 
-INSERT INTO `message` (`id_message`, `detail`, `reponse`, `USER_id_user`, `Annonce_id_Annonce`, `Annonce_USER_id_user`) VALUES
-(1, 'hi', 0, 9, 1, 9),
-(2, 'Bonjour monsieur Wilfried', 1, 6, 1, 9);
+INSERT INTO `message` (`id_message`, `detail`, `reponse`, `USER_id_user`, `Annonce_id_Annonce`, `Annonce_USER_id_user`, `date_creation`) VALUES
+(1, 'hi', 0, 6, 1, 9, '2022-10-12 10:37:18'),
+(2, 'Bonjour monsieur Jordan', 1, 9, 1, 9, '2022-10-18 07:37:36'),
+(3, 'je voudrais des renseignements sur les acers ', 0, 6, 1, 9, '2022-10-18 10:37:50'),
+(4, 'okay je viens avec les details dans quelques ', 1, 9, 1, 9, '2022-10-22 16:38:03');
 
 -- --------------------------------------------------------
 
