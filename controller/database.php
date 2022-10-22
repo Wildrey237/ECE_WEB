@@ -60,11 +60,11 @@ class Database
 
     // Annonce Function
 
-    public function AddAnnnonce ($nom_annonce, $detail, $date, $id_user, $id_categorie, $media){ // ajouter des annonces
-        $sql = "INSERT INTO `annonce` (`id_Annonce`, `nom_annonce`, `detail`, `date_ajout`, `USER_id_user`, `categorie_id_categorie`, `Media`) 
-                VALUES (NULL, :nom_annonce, :detail, :date, :id_user, :id_categorie, :media)";
+    public function AddAnnnonce ($nom_annonce, $detail, $prix, $date, $id_user, $id_categorie, $media){ // ajouter des annonces
+        $sql = "INSERT INTO `annonce` (`id_Annonce`, `nom_annonce`, `prix`, `detail`, `date_ajout`, `USER_id_user`, `categorie_id_categorie`, `Media`) 
+                VALUES (NULL, :nom_annonce, :prix, :detail, :date, :id_user, :id_categorie, :media)";
         $statement = self::$database->prepare($sql);
-        $statement->execute(array(":nom_annonce" => $nom_annonce, ":detail" => $detail, ":date" => $date, ":id_user" => $id_user, ":id_categorie" => $id_categorie, ":media" => $media));
+        $statement->execute(array(":nom_annonce" => $nom_annonce, ":detail" => $detail, ":prix" =>$prix, ":date" => $date, ":id_user" => $id_user, ":id_categorie" => $id_categorie, ":media" => $media));
     }
 
     public function AlterAnnnonce ($id_annonce,$nom_annonce, $prix, $detail, $date, $id_user, $id_categorie, $media){ //modifier les annonces
@@ -161,7 +161,8 @@ class Database
                 WHERE Annonce_id_Annonce = annonce.id_Annonce
                 AND annonce.USER_id_user = user.id_user
                 AND message.USER_id_user = :iduser
-                AND annonce.id_Annonce = :idannonce ";
+                AND annonce.id_Annonce = :idannonce 
+                ORDER BY `date_creation` DESC";
         $statement = self::$database->prepare($sql);
         $statement->bindParam(":iduser",$id_user,PDO::PARAM_INT);
         $statement->bindParam(":idannonce",$id_annonce,PDO::PARAM_INT);
@@ -170,11 +171,11 @@ class Database
     }
     #TODO refaire la fonction pour montrer les messages
 
-    public function CreateMessagefromEmeteur($id_user, $id_annonce, $reponse, $message){
-        $sql = "INSERT INTO `message` (`id_message`, `detail`, `Annonce_id_Annonce`, `USER_id_user`, `reponse`) 
-                VALUES (NULL, :detail, :id_annonce, :id_user, :reponse)";
+    public function CreateMessagefromEmeteur($id_user, $id_annonce, $reponse, $message, $id_user_annonce){
+        $sql = "INSERT INTO `message` (`id_message`, `detail`, `Annonce_id_Annonce`, `USER_id_user`, `reponse`, `Annonce_USER_id_user`) 
+                VALUES (NULL, :detail, :id_annonce, :id_user, :reponse, :id_user_annonce)";
         $statement = self::$database->prepare($sql);
-        $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user, ":reponse" => $reponse, ":detail" => $message));
+        $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user, ":reponse" => $reponse, ":detail" => $message, "id_user_annonce" => $id_user_annonce));
     }
     #TODO refaire la fonction pour creer les messages
 
