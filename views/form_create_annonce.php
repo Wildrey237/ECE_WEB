@@ -27,7 +27,7 @@
         <label >Nom de l'annonce</label><br>
         <input type ="text" name="nom_annonce" placeholder="Nom de l'annonce"><br><br>
         <label >Prix</label><br>
-        <input type ="number" name="prix_annonce" placeholder="prix de l'annonce"><br><br>
+        <input type ="float" name="prix_annonce" placeholder="prix de l'annonce"><br><br>
         <label for="story">Détail de l'annonce:</label>
         <textarea id="detail_annonce" name="detail"
                 rows="5" cols="33">

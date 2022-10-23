@@ -60,7 +60,7 @@
 
                         <a  class="btn btn-primary mx-auto" style="width: 250px" value="<?php echo $_GET["id"]?>"> Ajouter au favorie</a> &nbsp;&nbsp;&nbsp;
                        
-                        <a class="btn btn-success mx-auto" style="width: 250px"  value="<?php echo $_GET["id"]?>" href="chatbox.php?id='.$data['id'].'">Contacter l'utilisateur pour acheter cette article</a>
+                        <a class="btn btn-success mx-auto" style="width: 250px"  value="<?php echo $_GET["id"]?>" href="views/chatbox.php?id=<?php echo $_GET['id'] ?>">Contacter l'utilisateur pour acheter cette article</a>
                        
 
                         </div>
