@@ -219,7 +219,7 @@ class Database
     }
 
     function affiche_like($id_user){
-        $sql = "SELECT annonce.id_Annonce as 'id_annonce', annonce.nom_annonce AS 'nom_annonce', annonce.prix AS 'prix', annonce.detail AS 'detail' 
+        $sql = "SELECT annonce.id_Annonce as 'id_annonce', annonce.nom_annonce AS 'nom_annonce', annonce.prix AS 'prix', annonce.detail AS 'detail', annonce.Media AS 'media' 
                 FROM `annonce`, `like`
                 WHERE like.USER_id_user = {$id_user}
                 AND annonce.`USER_id_user` = {$id_user};";
