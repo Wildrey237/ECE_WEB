@@ -1,4 +1,4 @@
-<?php include_once ("../modele/show_message.php"); ?>
+<?php //include_once ("../modele/show_message.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,7 +11,7 @@
 <p class="logo-upper">WERJ</p>
 <hr>
 <h1>Identification</h1>
-<?php echo "message"; ?>
+<?php echo $_GET['id']; ?>
 <form action="../modele/create_message.php" method="post">
     <input type="text" name="message" placeholder="entrer votre message"> <input type="submit">
 </form>
