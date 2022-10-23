@@ -1,4 +1,6 @@
-<?php //include_once ("../modele/show_message.php"); ?>
+<?php include_once ("../modele/show_message.php");
+      include_once ("../modele/session.php")
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,8 +13,9 @@
 <p class="logo-upper">WERJ</p>
 <hr>
 <h1>Identification</h1>
-<?php echo $_GET['id']; ?>
+<?php Message($_GET['id'], $_SESSION['id']); ?>
 <form action="../modele/create_message.php" method="post">
+    <input type = "hidden" name= "id_annonce" value = '<?php echo $_GET['id'] ?>' >
     <input type="text" name="message" placeholder="entrer votre message"> <input type="submit">
 </form>
 <br><br><br>
