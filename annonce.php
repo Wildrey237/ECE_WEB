@@ -66,7 +66,7 @@
 
                     <div class="card mb-5">
                         <div class="card-body  classe mx-auto">
-                        <a class="btn btn-success" href="" style="width: 250px">Acheter</a>
+                        <a class="btn btn-success" href="" style="width: 250px">Contacter l utilisateur pour acheter cette article</a>
                        
 
                         </div>
