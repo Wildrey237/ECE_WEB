@@ -12,4 +12,3 @@ if (isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["email"]) &&
     echo "Welcome on WERJ dear " .$prenomU ."!";
     header("location: ../index.php"); // juste un exemple
 }
-?>

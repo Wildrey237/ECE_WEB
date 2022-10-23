@@ -1,13 +1,9 @@
 <?php
-
-  require_once('./controller/database.php');
-
-  $database = new Database();
- 
-
-  $data = $database->getAnnonceByID($_GET['id']);
-
-
+    include("../modele/session.php");
+    require_once("navbar.php");
+    require_once('./controller/database.php');
+    $database = new Database();
+    $data = $database->getAnnonceByID($_GET['id']);
 ?>
 
 <!doctype html>
@@ -21,8 +17,7 @@
   <body>
     
         <?php
-            include ("modele/session.php");
-            require_once("views/navbar.php");
+
         ?>
   
 
@@ -73,10 +68,7 @@
 
                     </div>
 
-            <?php
-            
-            require_once("views/footer.php");
-        ?>
+            <?php require_once("footer.php"); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>

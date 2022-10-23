@@ -23,4 +23,3 @@ function VerifySession(){
     }
     return $session;
 }
-?>
