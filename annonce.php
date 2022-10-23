@@ -53,16 +53,21 @@
                         </div>
                     </div>
 
+                    
 
                     <div class="card mb-5">
-                        <div class="card-body  classe mx-auto">
-                            <form method="post" action="">
-                                <input type="hidden" value="<?php echo $_GET["id"]?>">
-                                <input type="submit" class="btn btn-success" style="width: 250px" value="Contacter l'utilisateur pour acheter cette article">
-                            </form>
+                        <div class="card-body mx-auto">
+
+                        <a  class="btn btn-primary mx-auto" style="width: 250px" value="<?php echo $_GET["id"]?>"> Ajouter au favorie</a> &nbsp;&nbsp;&nbsp;
+                       
+                        <a class="btn btn-success mx-auto" style="width: 250px"  value="<?php echo $_GET["id"]?>" href="chatbox.php?id='.$data['id'].'">Contacter l'utilisateur pour acheter cette article</a>
+                       
+
                         </div>
 
                     </div>
+                    
+                    
 
             <?php require_once("views/footer.php"); ?>
 
