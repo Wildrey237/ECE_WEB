@@ -1,4 +1,10 @@
-<?php include_once ("../modele/session.php") ;?>
+<?php
+if(file_exists( "/views")){
+    include_once ("../modele/session.php") ;
+}else{
+    include_once ("./modele/session.php") ;
+}
+?>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
   <div class="container-fluid">
     <a class="navbar-brand me-5">WERJ</a>
