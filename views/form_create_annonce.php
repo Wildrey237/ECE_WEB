@@ -8,7 +8,7 @@
  foreach ($categorie as $option){
      $options = $options."<option value='{$option['id_categorie']}'> {$option['nom_categorie']} </option>";
  }
- var_dump($options);
+// var_dump($options);
 ?>
 
 <!DOCTYPE html>

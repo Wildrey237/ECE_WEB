@@ -1,4 +1,10 @@
-<?php include_once ("./modele/session.php") ;?>
+<?php
+if(file_exists( "/views")){
+    include_once ("../modele/session.php") ;
+}else{
+    include_once ("./modele/session.php") ;
+}
+?>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
   <div class="container-fluid">
     <a class="navbar-brand me-5">WERJ</a>
@@ -36,7 +42,7 @@
               <li class="nav-item dropdown me-5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Mes annonces</a> 
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="create_annonce.php">Ajouter une annonce</a></li>
+                  <li><a class="dropdown-item" href="./views/form_create_annonce.php">Ajouter une annonce</a></li>
                   <li><a class="dropdown-item" href="./views/checkboxDelAnnonce.php">Supprimer une annonce</a></li> 
                   <li><a class="dropdown-item" href="./views/form_modify_annonce.php">Modifer une annoce</a></li>
                 </ul>

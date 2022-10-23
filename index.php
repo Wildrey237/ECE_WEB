@@ -1,29 +1,22 @@
 <?php
+    include ("modele/session.php");
+    require_once('controller/database.php');
 
-  require_once('./controller/database.php');
+    $database = new Database();
+    $keywords = '';
+    $category = '';
+    $prix = '';
 
-  $database = new Database();
+    if ( isset($_GET['nom']) ) {
+        $keywords = $_GET['nom'];
+    }
+    if ( isset($_GET['category']) ) {
+        $category = $_GET['category'];
 
-  $keywords = '';
-  $category = '';
-  $prix = '';
-
-  if ( isset($_GET['nom']) ) {
-    $keywords = $_GET['nom'];
-
-  }
-
-  if ( isset($_GET['category']) ) {
-    $category = $_GET['category'];
-
-  }
-
-  if ( isset($_GET['prix']) ) {
-    $prix = $_GET['prix'];
-
-  }
-
- 
+    }
+    if ( isset($_GET['prix']) ) {
+        $prix = $_GET['prix'];
+    }
 
 ?>
 
@@ -37,12 +30,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body>
-    
-        <?php
-            include ("modele/session.php");
-            require_once("views/navbar.php");
-        ?>
-  
+        <?php require_once("views/navbar.php"); ?>
 
 
       <header class="bg-dark py-5">
@@ -75,24 +63,16 @@
                               <label for="">Rcherche par category</label>
                               <select  class="form-control" id="category" name="category">
                                 <option value="">Veuiller choisir une catégorie</option>
-
                                 <?php
                                   $categories = $database->GetCategorie();
-
-
                                   foreach ($categories as $key => $cat) {
                                     echo '<option';
-                                    
                                     if ($cat['id_categorie'] == $category) {
                                       echo ' selected ';
                                     }
-                                    
                                     echo ' value="'.$cat['id_categorie'].'" >'.$cat['nom_categorie'].'</option>';
                                   }
-
                                 ?>
-
-
                               </select>
                             </div>
                             <div class="form-group mb-3">
@@ -102,7 +82,6 @@
                             <div class="form-group mb-3">
                                <button class="btn btn-primary" type="submit" name="rechercher">Rechercher</button>
                             </div>
-
                             </form>
                             
                             
@@ -140,8 +119,6 @@
                                 
                                 <!-- Product actions-->';
                                 if (isset($_SESSION["session"])) {
-                                
-                                  // if ( isset($_SESSION['id_user']) ) { 
                                     echo '
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                       <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="annonce.php?id='.$product['id_Annonce'].'">plus d informations</a></div>
@@ -192,7 +169,7 @@
                                 }else{
                                     echo'
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                      <div class="text-center"><a class="btn btn-outline-danger mt-auto">Vous n avait pas accès a l annonce. Connecter-vous</a></div>
+                                      <div class="text-center"><a class="btn btn-outline-danger mt-auto">Vous n avez pas accès a l annonce. Connecter-vous</a></div>
                                     </div>
                                     ';
                                   }
@@ -215,9 +192,7 @@
               </div>
             </div>
             </div>
-            <?php
-               require_once("views/footer.php");
-            ?>
+            <?php require_once("views/footer.php"); ?>
 
 
 

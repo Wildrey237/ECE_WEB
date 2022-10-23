@@ -1,13 +1,9 @@
 <?php
-
-  require_once('./controller/database.php');
-
-  $database = new Database();
- 
-
-  $data = $database->getAnnonceByID($_GET['id']);
-
-
+    include("modele/session.php");
+    require_once("views/navbar.php");
+    require_once('controller/database.php');
+    $database = new Database();
+    $data = $database->getAnnonceByID($_GET['id']);
 ?>
 
 <!doctype html>
@@ -19,19 +15,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body>
-    
-        <?php
-            include ("modele/session.php");
-            require_once("views/navbar.php");
-        ?>
-  
 
 
       <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder"><?php echo $data['nom_annonce'] ?></h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Voici les informations de l annonce qui vous intéresse.</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Voici les informations de l'annonce qui vous intéresse.</p>
                 </div>
             </div>
         </header>
@@ -51,7 +41,7 @@
                                 
                             
                             </div>
-                            <img src="'.$data['photo_article'].'" class="w-100" alt="">
+                            <img src=" <?php echo $data['Media'] ?>" class="w-100 rounded" alt="">
                         </div>
                     </div>
 
@@ -63,20 +53,23 @@
                         </div>
                     </div>
 
+                    
 
                     <div class="card mb-5">
-                        <div class="card-body  classe mx-auto">
-                        <a class="btn btn-success" href="" style="width: 250px">Acheter</a>
+                        <div class="card-body mx-auto">
+
+                        <a  class="btn btn-primary mx-auto" style="width: 250px" value="<?php echo $_GET["id"]?>"> Ajouter au favorie</a> &nbsp;&nbsp;&nbsp;
+                       
+                        <a class="btn btn-success mx-auto" style="width: 250px"  value="<?php echo $_GET["id"]?>" href="chatbox.php?id='.$data['id'].'">Contacter l'utilisateur pour acheter cette article</a>
                        
 
                         </div>
 
                     </div>
+                    
+                    
 
-            <?php
-            
-            require_once("views/footer.php");
-        ?>
+            <?php require_once("views/footer.php"); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
