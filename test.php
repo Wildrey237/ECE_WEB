@@ -29,5 +29,6 @@
 //        header("location: index.php");
 //    }
 
-$leboncoin -> CreateMessagefromEmeteur(5,5,0,"bonjour le monde");
+//$leboncoin -> CreateMessagefromEmeteur(9,1,1,"comment allez vous?",9);
 
+var_dump($leboncoin -> ShowUserMessage(1,9));

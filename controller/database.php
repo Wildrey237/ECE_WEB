@@ -156,8 +156,7 @@ class Database
     }
 
     // Gestion des messages
-    public function AddMessage($detail, $id_annonce, $id_user)
-    { //pour ajouter un message
+    public function AddMessage($detail, $id_annonce, $id_user){ //pour ajouter un message
         $sql = "INSERT INTO `message` (`id_message`, `detail`, `Annonce_id_Annonce`, `USER_id_user`) 
                 VALUES (NULL, :detail, :id_annonce, :id_user)";
         $statement = self::$database->prepare($sql);
@@ -177,6 +176,14 @@ class Database
         $statement = self::$database->prepare($sql);
         $statement->bindParam(":iduser", $id_user, PDO::PARAM_INT);
         $statement->bindParam(":idannonce", $id_annonce, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    function TakeMessage($id_annonce){
+        $sql = "SELECT DISTINCT message.Annonce_USER_id_user AS 'id_user_annonce', message.detail AS 'message_detail'
+                FROM `message`
+                WHERE message.Annonce_id_Annonce  = {$id_annonce};";
+        $statement = self::$database->prepare($sql);
         $statement->execute();
         return $statement->fetchAll();
     }

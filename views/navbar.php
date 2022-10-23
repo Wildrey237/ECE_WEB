@@ -36,7 +36,7 @@
               <li class="nav-item dropdown me-5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Mes annonces</a> 
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="create_annonce.php">Ajouter une annonce</a></li>
+                  <li><a class="dropdown-item" href="./views/form_create_annonce.php">Ajouter une annonce</a></li>
                   <li><a class="dropdown-item" href="./views/checkboxDelAnnonce.php">Supprimer une annonce</a></li> 
                   <li><a class="dropdown-item" href="./views/form_modify_annonce.php">Modifer une annoce</a></li>
                 </ul>
