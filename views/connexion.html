@@ -4,20 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Connexion</title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+
+        nav {
+            height: 50px;
+            font-family: 'Varela Round';
+        }
+
+        input {
+            margin-left: 47%;
+        }
+
+        body {
+            background-image: linear-gradient(to right, #170e39, #4b4b5e);
+
+        }
+
+        hr {
+            border-color: black;
+        }
+
+    </style>
 </head>
-<body>
-    <p class="logo-upper">WERJ</p>
+<body class="p-3 m-0 border-0 bd-example">
+    <nav>
+        <p class="font-weight-bold text-light" style="font-size: 20px;">WERJ</p>
+    </nav>
+    <div class="rest-of-page">
+
+    </div>
     <hr>
-    <h1>Identification</h1>
+    <h1 class="text-light text-center">Identification</h1><br><br>
     <form action="../modele/connexionn.php" method="post">
-        <label >Votre mail</label><br>
-        <input type ="email" name="mail" placeholder="Tapez votre mail"><br><br>
-        <label >Mot de passe</label><br>
-        <input type="password" name="password" placeholder="Tapez votre Mot de passe"><br><br>
-        <input class="button-submit" type="submit" value="Connexion">
+        <div class="input-group input-group mb-3 w-25 flex-nowrap">
+            <!--<label>Votre mail</label><br>-->
+            <span class="input-group-text" id="addon-wrapping">@</span>
+            <input class="form-control w-75 p-3" aria-describedby="addon-wrapping" type ="email" name="mail" placeholder="Tapez votre mail" required><br><br>
+        </div>
+        <div class="input-group input-group mb-3 w-25 flex-nowrap">
+            <!--<label >Mot de passe</label><br>-->
+            <span class="input-group-text">Password</span>
+            <input class="form-control" type="password" name="password" placeholder="Tapez votre Mot de passe" required><br><br>
+        </div>
+        
+        <br><br><br><br><br><input class="btn btn-primary btn-lg" name="validate" type="submit" value="Connexion">
+       
     </form>
     <br><br><br>
-    <P style="margin-left: 43%; color: black">&copy;WERJ 2022|Powered by Groupe 1 Bachelor 2 ECE</P>
+    <P style="margin-left: 41%; color: white">&copy;WERJ 2022|Powered by Groupe 1 Bachelor 2 ECE</P>
 </body>
 </html>
