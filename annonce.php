@@ -41,7 +41,7 @@
                                 
                             
                             </div>
-                            <img src=" <?php echo $data['Media'] ?>" class="w-100 rounded"  alt="">
+                            <img src=" <?php echo $data['Media'] ?>" class="w-50 rounded" style="margin-left:27%"  alt="">
                         </div>
                     </div>
 
