@@ -8,3 +8,5 @@
             echo "<option value ='{$select["id_Annonce"]}'> {$select["nom_annonce"]} </option>";
         }
     }
+
+    ?>

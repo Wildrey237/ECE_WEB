@@ -6,6 +6,7 @@
     $keywords = '';
     $category = '';
     $prix = '';
+    $filter = '';
 
     if ( isset($_GET['nom']) ) {
         $keywords = $_GET['nom'];
@@ -15,8 +16,14 @@
 
     }
     if ( isset($_GET['prix']) ) {
-        $prix = $_GET['prix'];
-    }
+      $prix = $_GET['prix'];
+  }
+
+  if ( isset($_GET['filter']) ) {
+    $filter = $_GET['filter'];
+}
+
+
 
 ?>
 
@@ -36,7 +43,7 @@
       <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Leboncoin</h1>
+                    <h1 class="display-4 fw-bolder">WERJ</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Bienvenue sur WERJ</p>
                 </div>
             </div>
@@ -79,8 +86,21 @@
                               <label for="">Recherche par prix</label>
                               <input type="number" value="<?php echo $prix ?>" class="form-control"  id="price" name="prix">
                             </div>
+                            
+                            <div class="form-group mb-3">
+                              <label for="filter">Filtrer par</label>
+                              <select  class="form-control" id="filter" name="filter">
+                                <option <?php if ( $filter== 'price_dec' ) {  echo 'selected'; } ?> value="price_dec">Prix décroissant</option>
+                                <option <?php if ( $filter== 'price_acs' ) {  echo 'selected'; } ?> value="price_acs">Prix ascendant</option>
+                                
+                              </select>
+                            </div>
+                            
+
+
                             <div class="form-group mb-3">
                                <button class="btn btn-primary" type="submit" name="rechercher">Rechercher</button>
+                               
                             </div>
                             </form>
                             
@@ -97,7 +117,7 @@
                       <?php 
                       
                       if(isset($_GET["rechercher"])){
-                      $products = $database->getAnnonceByFilters( $keywords,$category,$prix );
+                      $products = $database->getAnnonceByFilters( $keywords,$category,$prix, $filter );
 
                       foreach ($products as $key => $product) {
 

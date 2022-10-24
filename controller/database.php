@@ -111,11 +111,36 @@ class Database
         return $statement->fetchAll();
     }
 
-    public function getAnnonceByFilters($keyword,$categoryID,$price){ //recuperer  les annonces par filters
-        $sql = "SELECT * FROM `annonce` WHERE  `categorie_id_categorie` = ?  AND `prix` <= ?  AND `nom_annonce` LIKE '%".$keyword."%'  ";
- 
-        $statement = self::$database->prepare($sql);
-        $statement->execute(array($categoryID,$price));
+    public function getAnnonceByFilters($keyword,$categoryID,$price, $filter){ //recuperer  les annonces par filters
+       
+        $reqSQL = 'SELECT * FROM `annonce` WHERE id_Annonce != 0 ';
+
+        if ($price != '') {
+            $reqSQL .= "  AND `prix` <= ".$price." ";
+        
+        }
+
+        if ($categoryID != '') {
+            $reqSQL .= " AND `categorie_id_categorie` = ".$categoryID." ";
+        
+        }
+
+        if ( $keyword != '' ) {
+         $reqSQL .= " AND `nom_annonce` LIKE '%".$keyword."%'  ";
+            
+        }
+
+        if ( $filter == 'price_dec' ) {
+            $reqSQL.=' ORDER BY prix DESC';
+        }
+        
+        if ( $filter == 'price_acs' ) {
+            $reqSQL.=' ORDER BY prix ASC';
+        }
+        
+     
+        $statement = self::$database->prepare($reqSQL);
+        $statement->execute();
         return $statement->fetchAll();
     }
 
@@ -199,32 +224,59 @@ class Database
     #TODO refaire la fonction pour creer les messages
 
 // Like
-    function like($id_user, $id_annonce){
-        $sql = "INSERT INTO `like` (`like`, `Annonce_id_Annonce`, `USER_id_user`) 
-            VALUES ('1', :id_annonce, :id_user)";
-        $statement = self::$database->prepare($sql);
-        $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user));
-    }
 
-    function unlike($id_user, $id_annonce)
+    function addAnnonceToMyFavourites($id_user, $id_annonce)
     {
-        $sql = "DELETE FROM `like` 
+    
+
+        // check
+
+        $sql = "SELECT * FROM `like` WHERE `USER_id_user`= ? AND `Annonce_id_Annonce` = ?";
+        $statementCHECK = self::$database->prepare($sql);
+        $statementCHECK->execute(array( $id_user, $id_annonce ));
+        
+
+        if ( sizeof($statementCHECK->fetchAll()) == 0 ) {
+
+            $sql = "INSERT INTO `like` (`like`, `Annonce_id_Annonce`, `USER_id_user`) 
+            VALUES ('1', :id_annonce, :id_user)";
+            $statement = self::$database->prepare($sql);
+            $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user));
+            
+        }else{
+            $sql = "DELETE FROM `like` 
             WHERE `like`.`Annonce_id_Annonce` = :id_annonce 
             AND `like`.`USER_id_user` = :id_user ";
 
-        $statement = self::$database->prepare($sql);
-        $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user));
-    }
+            $statement = self::$database->prepare($sql);
+            $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user));
+            
 
-    function affiche_like($id_user){
-        $sql = "SELECT annonce.id_Annonce as 'id_annonce', annonce.nom_annonce AS 'nom_annonce', annonce.prix AS 'prix', annonce.detail AS 'detail', annonce.Media AS 'media' 
-                FROM `annonce`, `like`
-                WHERE like.USER_id_user = {$id_user}
-                AND annonce.`USER_id_user` = {$id_user};";
+        }
+
+
+    }
+    
+
+    function affiche_like(){
+        $sql = "SELECT * FROM `like`, annonce WHERE like.Annonce_id_Annonce = annonce.id_Annonce AND like.USER_id_user = ?";
         $statement = self::$database->prepare($sql);
-        $statement->execute();
+        $statement->execute(array($_SESSION['id']));
         return $statement->fetchAll();
     }
 
+
+    function userLikesAnnonce($id_user,$annoneID){
+        $sql = "SELECT * FROM `like` WHERE `USER_id_user`= ? AND `Annonce_id_Annonce` = ?";
+        $statementCHECK = self::$database->prepare($sql);
+        $statementCHECK->execute(array( $id_user, $annoneID ));
+        
+
+        if ( sizeof($statementCHECK->fetchAll()) == 0 ) { 
+            return true; 
+        }else{ 
+            return false; 
+        }
+    }
 
 }

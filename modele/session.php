@@ -16,10 +16,12 @@ function Session ($nomU="",$mail="",$id="",$connect = false){
 }
 
 function VerifySession(){
+    $session = false;
+
     if ($_SESSION["session"]){
         $session = true;
-    }else{
-        $session = false;
     }
     return $session;
 }
+
+?>
