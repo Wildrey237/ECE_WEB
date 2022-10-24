@@ -60,7 +60,7 @@
                               <input type="text" class="form-control" id="keywords" name="nom" value="<?php echo $keywords ?>">
                             </div>
                             <div class="form-group mb-3">
-                              <label for="">Rcherche par category</label>
+                              <label for="">Recherche par categorie</label>
                               <select  class="form-control" id="category" name="category">
                                 <option value="">Veuiller choisir une catégorie</option>
                                 <?php
@@ -76,7 +76,7 @@
                               </select>
                             </div>
                             <div class="form-group mb-3">
-                              <label for="">Rcherche par prix</label>
+                              <label for="">Recherche par prix</label>
                               <input type="number" value="<?php echo $prix ?>" class="form-control"  id="price" name="prix">
                             </div>
                             <div class="form-group mb-3">
@@ -114,6 +114,7 @@
                                         <!-- Product price-->
                                        '.$product['prix'].' €
                                     </div>
+                                    
                                 </div>
                                 
                                 
@@ -121,9 +122,10 @@
                                 if (isset($_SESSION["session"])) {
                                     echo '
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                      <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="annonce.php?id='.$product['id_Annonce'].'">plus d informations</a></div>
+                                      <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="annonce.php?id='.$product['id_Annonce'].'">Plus d informations</a></div>
                                     </div>
                                     ';
+                                    
                                 }else{
                                     echo'
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
