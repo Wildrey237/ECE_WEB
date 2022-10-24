@@ -31,7 +31,7 @@
                             <div class="d-flex justify-content-between">
                                 <div>
                                   <h1><?php echo $data['nom_annonce'] ?></h1>
-                                  <h3><?php echo $data['prix'] ?> €</h3>    
+                                  <h3><?php echo $data['prix'] ?> €</h3>
                                 </div>
 
                                 <div>
@@ -41,7 +41,7 @@
                                 
                             
                             </div>
-                            <img src=" <?php echo $data['Media'] ?>" class="w-100 rounded" alt="">
+                            <img src=" <?php echo $data['Media'] ?>" class="w-100 rounded img-thumbnail" alt="">
                         </div>
                     </div>
 

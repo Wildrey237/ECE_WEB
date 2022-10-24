@@ -15,7 +15,7 @@ function DoTable($id){
 
     }
 
-    echo "<br><br><br><input type='submit' name='effacer' value='Eliminer cette annonce'>";
+    
 
     if (isset($_POST['effacer'])){
         echo "<script>alert('Are you sure you want to delete this media ?')</script>";
