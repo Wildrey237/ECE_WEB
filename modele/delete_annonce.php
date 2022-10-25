@@ -15,11 +15,7 @@ function DoTable($id){
 
     }
 
-<<<<<<< HEAD
-    
-=======
-    echo "<br><input style='background-color: #f44336; background-color: #f44336; padding: 14px 40px; border-radius: 8px; margin-left:27%' type='submit' name='effacer' value='Eliminer cette annonce'><br><br><br>";
->>>>>>> 47fc24df668ede4833f9b5702ca05bfc99ba312a
+
 
     if (isset($_POST['effacer'])){
         echo "<script>alert('Are you sure you want to delete this media ?')</script>";

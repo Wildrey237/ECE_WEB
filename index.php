@@ -83,8 +83,8 @@
                               </select>
                             </div>
                             <div class="form-group mb-3">
-                              <label>Recherche par prix</label>
-                              <input type="float" min="0" max="999999" value="<?php echo $prix ?>" class="form-control"  id="price" name="prix">
+                              <label for="">Recherche par prix</label>
+                              <input type="number" value="<?php echo $prix ?>" class="form-control"  id="price" name="prix">
                             </div>
                             
                             <div class="form-group mb-3">
