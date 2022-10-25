@@ -25,35 +25,19 @@
                 </div>
             </div>
         </header>
-
-        <div class="card mb-5">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                  <h1><?php echo $data['nom_annonce'] ?></h1>
-                                  <h3><?php echo $data['prix'] ?> €</h3>
-                                </div>
-
+    
                                 <div>
                                 <p class="text-muted"><?php echo $data['date_ajout'] ?></p>
-                                </div>
-                                    
-                                
+                                </div>  
                             
-                            </div>
-                            <img src=" <?php echo $data['Media'] ?>" class="w-100 rounded img-thumbnail" alt="">
-                        </div>
-                    </div>
-
-
-                    <div class="card mb-3">
-                        <div class="card-body"> 
-                         <p class="text-muted"><?php echo $data['detail'] ?></p>
+                            
+                            <h1 class="text-center"><?php echo $data['nom_annonce'] ?></h1>
+                            <img style="margin-left:37%" src=" <?php echo $data['Media'] ?>" class="w-25 rounded" alt="">
+                            <p>""</p>
+                            <h3 class="text-center"><?php echo $data['prix'] ?> €</h3><br><br>
+                   
+                    <p class="text-muted text-center"><?php echo $data['detail'] ?></p><br><br><br>
                          
-                        </div>
-                    </div>
-
-                    
 
                     <div class="card mb-5">
                         <div class="card-body mx-auto">

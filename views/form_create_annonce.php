@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="input-group input-group mb-3 w-100 flex-nowrap">
                                     <span class="input-group-text" id="addon-wrapping">URL Image</span>
-                                    <input class="form-control w-75 p-3" aria-describedby="addon-wrapping" type ="text" name="prix_annonce" required><br>
+                                    <input class="form-control w-75 p-3" aria-describedby="addon-wrapping" type ="text" name="media" required><br>
                                 </div><br>
                                 <div class="form-group mb-3">
                                     <input style="margin-left: 41%; height: 50px; width: 120px; font-size: 20px;" class="btn btn-primary" type="submit" value="Valider">

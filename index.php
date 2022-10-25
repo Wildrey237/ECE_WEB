@@ -77,7 +77,7 @@
                             </div>
                             <div class="form-group mb-3">
                               <label>Recherche par prix</label>
-                              <input type="number" min="0" max="999999" value="<?php echo $prix ?>" class="form-control"  id="price" name="prix">
+                              <input type="float" min="0" max="999999" value="<?php echo $prix ?>" class="form-control"  id="price" name="prix">
                             </div>
                             <div class="form-group mb-3">
                                <button class="btn btn-primary" type="submit" name="rechercher">Rechercher</button>
