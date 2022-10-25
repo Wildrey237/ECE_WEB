@@ -5,21 +5,6 @@
         header("location:index.php");
     }
     $database = new Database();
-    $keywords = '';
-    $category = '';
-    $prix = '';
-
-    if ( isset($_GET['nom']) ) {
-        $keywords = $_GET['nom'];
-    }
-    if ( isset($_GET['category']) ) {
-        $category = $_GET['category'];
-
-    }
-    if ( isset($_GET['prix']) ) {
-        $prix = $_GET['prix'];
-    }
-
 ?>
 
 <!doctype html>
