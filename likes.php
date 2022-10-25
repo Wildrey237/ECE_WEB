@@ -80,7 +80,7 @@
                                                 </td>
                                                 
                                                 <td><strong>'.$product['nom_annonce'].'</strong></td>
-                                                <td>'.$product['prix'].'$</td>
+                                                <td>'.$product['prix'].'€</td>
                                                 
                                                 <td><a href="annonce.php?id='.$product['id_Annonce'].'" class="text-primary">Voir annonce</a></td>
                                                 
