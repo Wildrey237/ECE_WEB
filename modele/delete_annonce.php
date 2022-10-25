@@ -10,7 +10,7 @@ function DoTable($id){
     /*var_dump($annonce); */
     foreach ($annonce as $select){
         echo "<tr>
-                   <td> <input type='radio' name='choixAnnonce' value ='{$select["id_Annonce"]}'> </td> <td>{$select["nom_annonce"]} </td> <td>{$select["detail"]} </td>
+                   <td> <input type='radio' name='choixAnnonce' value ='{$select["id_Annonce"]}'> </td> <td>{$select["nom_annonce"]} </td>
              </tr>";
 
     }

@@ -26,6 +26,12 @@
             font-family: 'Varela Round';
         }
 
+        .button-effacer {
+            margin-left: 42%;
+        }
+
+        
+
 
     </style>
 </head>
@@ -41,11 +47,11 @@
                 <div class="card-body">
                     <table name="select">
                         <tr>
-                            <td> Choix | </td> <td>Nom annonce | </td> <td> Detail </td>
+                            <td> Choix | </td> <td>Nom annonce </td>
                         </tr>
                         <?php $var = DoTable($_SESSION["id"]); ?>
                     </table>
-                    <br><br><br><input type='submit' name='effacer' value='Eliminer cette annonce'>
+                    <br><br><br><input class="button-effacer btn btn-danger" type='submit' name='effacer' value='Eliminer cette annonce'>
                 </div>
             </div>
         </div>

@@ -75,7 +75,8 @@ foreach ($categorie as $option){
                             </div><br>
                             <div class="form-group mb-3">
                                 <input style="margin-left: 41%; height: 50px; width: 120px; font-size: 20px;" class="btn btn-primary" type="submit" value="Valider">
-                            </div>
+                            </div><br>
+                            <p><a href="../index.php" style="margin-left: 27%;"> Retourner sur la page principale</a></p>
                         </div>
                     </div>
                 </div>
@@ -106,6 +107,7 @@ foreach ($categorie as $option){
     <input type ="text" name="media" placeholder="image"><br><br>
     <input class="button-submit" type="submit" value="Valider">-->
 </form>
+
 <br><br><br>
 <P style="margin-left: 40.5%; color: black">&copy;WERJ 2022|Powered by Groupe 1 Bachelor 2 ECE</P>
 </body>
