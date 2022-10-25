@@ -15,3 +15,4 @@ if(mail($dest,$objet,$message,$entetes))
 else
     echo "Un problème est survenu.";
 exit;
+?>

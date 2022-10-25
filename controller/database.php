@@ -20,10 +20,11 @@ class Database
 
     // user function
 
-    public function GetUsers()
+    public function GetUsersbyID($id)
     {
-        $sql = 'SELECT * FROM user';
+        $sql = 'SELECT * FROM user WHERE id_user = :id';
         $statement = self::$database->prepare($sql);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll();
     }
@@ -110,11 +111,36 @@ class Database
         return $statement->fetchAll();
     }
 
-    public function getAnnonceByFilters($keyword,$categoryID,$price){ //recuperer  les annonces par filters
-        $sql = "SELECT * FROM `annonce` WHERE  `categorie_id_categorie` = ?  AND `prix` <= ?  AND `nom_annonce` LIKE '%".$keyword."%'  ";
- 
-        $statement = self::$database->prepare($sql);
-        $statement->execute(array($categoryID,$price));
+    public function getAnnonceByFilters($keyword,$categoryID,$price, $filter){ //recuperer  les annonces par filters
+       
+        $reqSQL = 'SELECT * FROM `annonce` WHERE id_Annonce != 0 ';
+
+        if ($price != '') {
+            $reqSQL .= "  AND `prix` <= ".$price." ";
+        
+        }
+
+        if ($categoryID != '') {
+            $reqSQL .= " AND `categorie_id_categorie` = ".$categoryID." ";
+        
+        }
+
+        if ( $keyword != '' ) {
+         $reqSQL .= " AND `nom_annonce` LIKE '%".$keyword."%'  ";
+            
+        }
+
+        if ( $filter == 'price_dec' ) {
+            $reqSQL.=' ORDER BY prix DESC';
+        }
+        
+        if ( $filter == 'price_acs' ) {
+            $reqSQL.=' ORDER BY prix ASC';
+        }
+        
+     
+        $statement = self::$database->prepare($reqSQL);
+        $statement->execute();
         return $statement->fetchAll();
     }
 
@@ -164,23 +190,21 @@ class Database
     }
 
     // affichages des messages selon un utilisateur et le createur de l'annonce
-    public function ShowUserMessage($id_annonce, $id_user)
-    {
-        $sql = "SELECT message.detail as 'message', user.nom_user as 'recepteur', annonce.nom_annonce as 'Annonce', message.USER_id_user AS 'emmeteur'
-                FROM message, annonce, user
-                WHERE Annonce_id_Annonce = annonce.id_Annonce
-                AND annonce.USER_id_user = user.id_user
-                AND message.USER_id_user = :iduser
-                AND annonce.id_Annonce = :idannonce 
+    public function ShowUserMessage($id_annonce, $id_user, $id_repond){
+        $sql = "SELECT message.detail as 'detail', message.USER_id_user AS 'emmeteur', message.reponse AS 'reponse', message.date_creation AS 'date'
+                FROM message
+                WHERE message.USER_id_user = :id_user OR message.USER_id_user = :id_message_user
+                AND message.Annonce_id_Annonce = :id_annonce
                 ORDER BY `date_creation` ASC";
         $statement = self::$database->prepare($sql);
-        $statement->bindParam(":iduser", $id_user, PDO::PARAM_INT);
-        $statement->bindParam(":idannonce", $id_annonce, PDO::PARAM_INT);
+        $statement->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+        $statement->bindParam(":id_message_user", $id_repond, PDO::PARAM_INT);
+        $statement->bindParam(":id_annonce", $id_annonce, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll();
     }
     function TakeMessage($id_annonce){
-        $sql = "SELECT DISTINCT message.Annonce_USER_id_user AS 'id_user_annonce', message.detail AS 'message_detail'
+        $sql = "SELECT DISTINCT message.Annonce_USER_id_user AS 'id_user_annonce', message.detail AS 'message_detail', message.USER_id_user AS 'id_recepteur'
                 FROM `message`
                 WHERE message.Annonce_id_Annonce  = {$id_annonce};";
         $statement = self::$database->prepare($sql);
@@ -190,43 +214,69 @@ class Database
 
     #TODO refaire la fonction pour montrer les messages
 
-    public function CreateMessagefromEmeteur($id_user, $id_annonce, $reponse, $message, $id_user_annonce)
+    public function CreateMessagefromEmeteur($id_user, $id_annonce, $message, $id_user_annonce, $date, $reponse)
     {
-        $sql = "INSERT INTO `message` (`id_message`, `detail`, `Annonce_id_Annonce`, `USER_id_user`, `reponse`, `Annonce_USER_id_user`) 
-                VALUES (NULL, :detail, :id_annonce, :id_user, :reponse, :id_user_annonce)";
+        $sql = "INSERT INTO `message` (`id_message`, `detail`, `reponse`, `USER_id_user`, `Annonce_id_Annonce`, `Annonce_USER_id_user`, `date_creation`)
+                VALUES (NULL, :detail, :reponse, :id_user, :id_annonce, :id_user_annonce, :date)";
         $statement = self::$database->prepare($sql);
-        $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user, ":reponse" => $reponse, ":detail" => $message, "id_user_annonce" => $id_user_annonce));
+        $statement->execute(array(":id_annonce" => $id_annonce, ":reponse" => $reponse, ":id_user" => $id_user, ":detail" => $message, ":id_user_annonce" => $id_user_annonce, ":date" => $date));
     }
     #TODO refaire la fonction pour creer les messages
 
 // Like
-    function like($id_user, $id_annonce)
-    {
-        $sql = "INSERT INTO `like` (`like`, `Annonce_id_Annonce`, `USER_id_user`) 
-            VALUES ('1', :id_annonce, :id_user)";
-        $statement = self::$database->prepare($sql);
-        $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user));
-    }
 
-    function unlike($id_user, $id_annonce)
+    function addAnnonceToMyFavourites($id_user, $id_annonce)
     {
-        $sql = "DELETE FROM `like` 
+    
+
+        // check
+
+        $sql = "SELECT * FROM `like` WHERE `USER_id_user`= ? AND `Annonce_id_Annonce` = ?";
+        $statementCHECK = self::$database->prepare($sql);
+        $statementCHECK->execute(array( $id_user, $id_annonce ));
+        
+
+        if ( sizeof($statementCHECK->fetchAll()) == 0 ) {
+
+            $sql = "INSERT INTO `like` (`like`, `Annonce_id_Annonce`, `USER_id_user`) 
+            VALUES ('1', :id_annonce, :id_user)";
+            $statement = self::$database->prepare($sql);
+            $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user));
+            
+        }else{
+            $sql = "DELETE FROM `like` 
             WHERE `like`.`Annonce_id_Annonce` = :id_annonce 
             AND `like`.`USER_id_user` = :id_user ";
 
-        $statement = self::$database->prepare($sql);
-        $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user));
-    }
+            $statement = self::$database->prepare($sql);
+            $statement->execute(array(":id_annonce" => $id_annonce, ":id_user" => $id_user));
+            
 
-    function affiche_like($id_user){
-        $sql = "SELECT annonce.id_Annonce as 'id_annonce', annonce.nom_annonce AS 'nom_annonce', annonce.prix AS 'prix', annonce.detail AS 'detail', annonce.Media AS 'media' 
-                FROM `annonce`, `like`
-                WHERE like.USER_id_user = {$id_user}
-                AND annonce.`USER_id_user` = {$id_user};";
+        }
+
+
+    }
+    
+
+    function affiche_like(){
+        $sql = "SELECT * FROM `like`, annonce WHERE like.Annonce_id_Annonce = annonce.id_Annonce AND like.USER_id_user = ?";
         $statement = self::$database->prepare($sql);
-        $statement->execute();
+        $statement->execute(array($_SESSION['id']));
         return $statement->fetchAll();
     }
 
+
+    function userLikesAnnonce($id_user,$annoneID){
+        $sql = "SELECT * FROM `like` WHERE `USER_id_user`= ? AND `Annonce_id_Annonce` = ?";
+        $statementCHECK = self::$database->prepare($sql);
+        $statementCHECK->execute(array( $id_user, $annoneID ));
+        
+
+        if ( sizeof($statementCHECK->fetchAll()) == 0 ) { 
+            return true; 
+        }else{ 
+            return false; 
+        }
+    }
 
 }

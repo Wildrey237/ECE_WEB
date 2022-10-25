@@ -2,10 +2,10 @@
 
 
 <!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="container my-5">
+
 
   <!-- Footer -->
-<footer class="bg-dark text-center text-white">
+  <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
   <div class="container p-4">
     <!-- Section: Social media -->
@@ -74,6 +74,4 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-  
-</div>
-<!-- End of .container -->
+ 

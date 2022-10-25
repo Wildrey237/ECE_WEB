@@ -91,20 +91,28 @@
 
         <!--
         <label >Nom de l'annonce</label><br>
-        <input type ="text" name="nom_annonce" placeholder="Nom de l'annonce"><br><br>
+        <input type ="text" name="nom_annonce" placeholder="Nom de l'annonce" required><br><br>
         <label >Prix</label><br>
-        <input type ="float" name="prix_annonce" placeholder="prix de l'annonce"><br><br>
-        <label for="story">Détail de l'annonce:</label>
-        <textarea id="detail_annonce" name="detail"
-                rows="5" cols="33">
+        <input type ="float" name="prix_annonce" placeholder="prix de l'annonce" required><br><br>
+        <label for="story">Détail de l'annonce:</label><br>
+        <textarea id="detail_annonce" name="detail" rows="5" cols="33" placeholder="description de l'annonce">
         </textarea><br><br>
         <label for="pet-select">Choisi la catégorie</label>
+<<<<<<< HEAD
         <select name="Categories" id="categorie_annonce">
             
         </select><br><br>
         <label >Image</label><br>
         <input type ="text" name="media" placeholder="image"><br><br>
         <input class="button-submit" type="submit" value="Valider">-->
+=======
+        <select name="Categories" id="categorie_annonce" required >
+            <?php echo($options);?>
+        </select><br><br>
+        <label >Image</label><br>
+        <input type ="text" name="media" placeholder="image" required><br><br>
+        <input class="button-submit" type="submit" value="Valider">
+>>>>>>> 47fc24df668ede4833f9b5702ca05bfc99ba312a
     </form>
     <br><br><br>
     <P style="margin-left: 40.5%; color: black">&copy;WERJ 2022|Powered by Groupe 1 Bachelor 2 ECE</P>

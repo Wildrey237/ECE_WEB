@@ -31,4 +31,5 @@
 
 //$leboncoin -> CreateMessagefromEmeteur(9,1,1,"comment allez vous?",9);
 
-var_dump($leboncoin -> ShowUserMessage(1,9));
+$id_user_annonce = $leboncoin ->CreateMessagefromEmeteur(6, 1, 'messsage', 9);
+var_dump($id_user_annonce);

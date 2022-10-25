@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 22 oct. 2022 à 16:04
+-- Généré le : dim. 23 oct. 2022 à 14:33
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -41,15 +41,17 @@ CREATE TABLE IF NOT EXISTS `annonce` (
   UNIQUE KEY `id_Annonce_UNIQUE` (`id_Annonce`),
   KEY `fk_Annonce_USER1_idx` (`USER_id_user`),
   KEY `fk_Annonce_categorie1_idx` (`categorie_id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `annonce`
 --
 
 INSERT INTO `annonce` (`id_Annonce`, `nom_annonce`, `prix`, `detail`, `date_ajout`, `USER_id_user`, `categorie_id_categorie`, `Media`) VALUES
-(1, 'acer nitro', 999, 'acer nitro core i5', '2022-10-10', 9, 2, 'acer.jpg'),
-(2, 'Mercedes Classe G', 75000, 'Mercedes GLK', '2022-10-22', 6, 1, 'mercedesglk.png');
+(1, 'acer nitro', 999, 'acer nitro core i5', '2022-10-10', 9, 2, 'https://m.media-amazon.com/images/I/81kBKMPObLL._AC_SX679_.jpg'),
+(2, 'Mercedes Classe c', 75000, 'Mercedes c', '2022-10-23', 6, 1, 'https://www.viinz.com/wp-content/uploads/2021/07/essai-mercedes-amg-g-63-exterieur-71-1170x780.jpg'),
+(3, 'iphone 14', 1300, 'iphone 14 pro max', '2022-10-23', 6, 1, 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-pro-model-unselect-gallery-1-202209?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660753619946'),
+(4, 'samsung', 999, 'Samsung z flip', '2022-10-23', 9, 3, 'https://www.01net.com/app/uploads/2022/09/test-samsung-galaxy-z-flip-4.jpg');
 
 -- --------------------------------------------------------
 
@@ -87,6 +89,13 @@ CREATE TABLE IF NOT EXISTS `like` (
   PRIMARY KEY (`Annonce_id_Annonce`,`USER_id_user`),
   KEY `fk_Like_USER1_idx` (`USER_id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `like`
+--
+
+INSERT INTO `like` (`like`, `Annonce_id_Annonce`, `USER_id_user`) VALUES
+(1, 1, 9);
 
 -- --------------------------------------------------------
 

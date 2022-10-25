@@ -10,3 +10,5 @@
         echo "good";
         header("location: ../views/good.html");
     }
+
+?>
