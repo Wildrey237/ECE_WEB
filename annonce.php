@@ -4,6 +4,9 @@
     require_once('controller/database.php');
     $database = new Database();
     $data = $database->getAnnonceByID($_GET['id']);
+    if(!VerifySession()){
+        header("location:index.php");
+    }
 ?>
 
 <!doctype html>
@@ -25,33 +28,23 @@
                 </div>
             </div>
         </header>
-
-                <div class="card mb-5">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                  <h1><?php echo $data['nom_annonce'] ?></h1>
-                                  <h3><?php echo $data['prix'] ?> €</h3>    
-                                </div>
-
-                                <div>
-                                <p class="text-muted"><?php echo $data['date_ajout'] ?></p>
-                                </div>
-                                    
-                                
-                            
-                            </div>
-                            <img src=" <?php echo $data['Media'] ?>" class="w-50 rounded" style="margin-left:27%"  alt="">
-                        </div>
-                    </div>
-
-
-                    <div class="card mb-3">
-                        <div class="card-body mx-auto" > 
-                         <p class="text-muted"><?php echo $data['detail'] ?></p>
+                    <div>
+                        <p class="text-muted"><?php echo $data['date_ajout'] ?></p>
+                    </div><br><br><br>
+                
+                    <div class="text-dark text-center">
+                        <h1><?php echo $data['nom_annonce'] ?></h1>
+                           
+                    </div>     
+                           
+                    <img src=" <?php echo $data['Media'] ?>" class="w-25 rounded" style="margin-left:37.5%;"  alt=""><br><br>
+                    <div class="text-center">
+                        <h3><?php echo $data['prix'] ?> €</h3>
+                    </div><br><br>
+   
+                    <p class="text-muted text-center"><?php echo $data['detail'] ?></p><br>
                          
-                        </div>
-                    </div>
+                        
 
                     
 

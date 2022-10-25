@@ -8,7 +8,7 @@
         $leboncoin->AlterAnnnonce($_POST["id_annonce"], $_POST["nom_annonce"], $_POST["prix"], $_POST['detail'], $date, $_SESSION["id"], $_POST['categorie'],$_POST["media"]);
 //        $_POST["id_annonce"],,, , , ,,
         echo "good";
-        header("location: ../views/good.html");
+        header("location: ../views/good.php");
     }
 
 ?>

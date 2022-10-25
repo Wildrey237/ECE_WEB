@@ -1,4 +1,9 @@
-<?php include_once ("../modele/delete_annonce.php") ?>
+<?php include_once ("../modele/delete_annonce.php");
+include_once("../modele/session.php");
+if(!VerifySession()){
+    header("location:../index.php");
+}
+?>
 
 
 

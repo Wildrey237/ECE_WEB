@@ -2,6 +2,9 @@
 <?php
 include_once ("../modele/session.php");
 include_once ("../controller/database.php");
+if(!VerifySession()){
+    header("location:../index.php");
+}
 $leboncoin = new Database();
 $categorie = $leboncoin ->GetCategorie();
 $options ="";

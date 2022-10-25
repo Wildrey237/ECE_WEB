@@ -20,6 +20,8 @@ function VerifySession(){
 
     if ($_SESSION["session"]){
         $session = true;
+    }else{
+        $session = false;
     }
     return $session;
 }

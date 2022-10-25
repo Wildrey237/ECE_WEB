@@ -1,7 +1,9 @@
 <?php
     include ("modele/session.php");
     require_once("controller/database.php");
-
+    if(!VerifySession()){
+        header("location:index.php");
+    }
     $database = new Database();
     $keywords = '';
     $category = '';

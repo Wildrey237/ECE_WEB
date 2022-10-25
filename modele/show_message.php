@@ -20,7 +20,7 @@
             $emeteurs = $leboncoin -> ShowUserMessage($id_annonce, $id_createur_annonce, $id_reponds);
             foreach ($emeteurs as $message){
                 $nom = Nom($message['emmeteur']);
-                echo("{$message["date"]} ---- {$nom} : {$message["detail"]}<br>");
+                echo("{$message["date"]} ---- <html><strong>{$nom}</strong></html> : {$message["detail"]}<br>");
             }
         }else{
             echo "<br> vous avez pas de messages </br>";
