@@ -193,8 +193,9 @@ class Database
     public function ShowUserMessage($id_annonce, $id_user, $id_repond){
         $sql = "SELECT message.detail as 'detail', message.USER_id_user AS 'emmeteur', message.reponse AS 'reponse', message.date_creation AS 'date'
                 FROM message
-                WHERE message.USER_id_user = :id_user OR message.USER_id_user = :id_message_user
-                AND message.Annonce_id_Annonce = :id_annonce
+                WHERE message.Annonce_id_Annonce = :id_annonce
+                AND message.USER_id_user = :id_message_user  OR message.USER_id_user = :id_user
+                AND Annonce_USER_id_user = :id_user
                 ORDER BY `date_creation` ASC";
         $statement = self::$database->prepare($sql);
         $statement->bindParam(":id_user", $id_user, PDO::PARAM_INT);

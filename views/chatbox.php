@@ -13,7 +13,7 @@
 <p class="logo-upper">WERJ</p>
 <hr>
 <h1>Identification</h1>
-<?php Message($_GET['id'], $_SESSION['id']); ?>
+<?php Message($_GET['id']); ?>
 <form action="../modele/create_message.php" method="post">
     <input type = "hidden" name= "id_annonce" value = '<?php echo $_GET['id'] ?>' >
     <input type="text" name="message" placeholder="entrer votre message"> <input type="submit">

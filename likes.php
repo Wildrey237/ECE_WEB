@@ -84,7 +84,7 @@
                                                 
                                                 <td><a href="annonce.php?id='.$product['id_Annonce'].'" class="text-primary">Voir annonce</a></td>
                                                 
-                                                <td><a href="like_annonce.php?id='.$product['id_Annonce'].'" class="text-danger">Retirer</a></td>
+                                                <td><a href="modele/like_annonce.php?id='.$product['id_Annonce'].'" class="text-danger">Retirer</a></td>
                                                 
                                                  
                                                 

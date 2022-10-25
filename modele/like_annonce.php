@@ -1,6 +1,6 @@
 <?php
-    include("modele/session.php"); 
-    require_once('./controller/database.php');
+    include("session.php");
+    require_once('../controller/database.php');
     $database = new Database();
 
 
@@ -17,10 +17,10 @@
 
         $database->addAnnonceToMyFavourites( $userID,$id );
 
-        header("Location:annonce.php?id=".$id);
+        header("Location:../annonce.php?id=".$id);
 
     }else{
-        header("Location:index.php");
+        header("Location:../index.php");
     
     }
 
